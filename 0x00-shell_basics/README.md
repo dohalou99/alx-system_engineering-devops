@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 0. Where am I?
 Here's a script that prints the absolute path name of the current working directory.
 1. What’s in there?
@@ -28,3 +29,6 @@ Here's a script that  Write a script that prints the type of the file named iama
 Here's a script that  Create a symbolic link to /bin/ls, named __ls__. The symbolic link should be created in the current working directory.
 14. Copy HTML files
 Here's a script that Create a script that copies all the HTML files from the current working directory to the parent of the working directory, but only copy files that did not exist in the parent of the working directory or were newer than the versions in the parent of the working directory.
+=======
+script that prints the absolute path name of the current working directory
+>>>>>>> current_working_directory

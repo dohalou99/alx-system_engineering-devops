@@ -1,2 +1,3 @@
 #!/bin/bash
-echo $(('echo $PATH|greep -o":/"|wc -l' + 1))
+echo $(("echo $PATH|greep -o":/"|wc -l" + 1))
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#start an Apache Server with this magic line
+sudo service apache2 status
+service apache2 restart

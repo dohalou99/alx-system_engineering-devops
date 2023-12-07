@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#A scripy that configures an Nginx server to listen on port 80 from port 8080
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart

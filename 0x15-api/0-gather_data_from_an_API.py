@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A script that returns to-do list information for a given employee ID."""
+"""A script return list information for a given employee ID."""
 import requests as r
 import sys
 

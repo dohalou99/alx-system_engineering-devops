@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""A script return list information for a given employee ID."""
+"""returns information TODO list progress for a given employee ID"""
 import requests as r
 import sys
 

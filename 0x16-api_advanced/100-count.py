@@ -1,15 +1,15 @@
 #!/usr/bin/python3
+"""queries the Reddit API, parses the title of all hot articles, and prints a
+sorted count of given keywords(case-insensitive, delimited by spaces.
+Javascript should count as javascript, but java should not).
 """
-Function that queries the Reddit API and prints
-the top ten hot posts of a subreddit
-"""
-import re
-import requests
-import sys
+from requests import get
+
 
 def count_words(subreddit, word_list, word_count=[], page_after=None):
     """
-    Adds item into a list
+    Prints the count of the given words present in the title of the
+    subreddit's hottest articles.
     """
     headers = {'User-Agent': 'HolbertonSchool'}
 
@@ -24,13 +24,13 @@ def count_words(subreddit, word_list, word_count=[], page_after=None):
         r = get(url, headers=headers, allow_redirects=False)
         if r.status_code == 200:
             for child in r.json()['data']['children']:
-                j = 0
-                for j in range(len(word_list)):
+                i = 0
+                for i in range(len(word_list)):
                     for word in [w for w in child['data']['title'].split()]:
                         word = word.lower()
-                        if word_list[j] == word:
-                            word_count[j] += 1
-                    j += 1
+                        if word_list[i] == word:
+                            word_count[i] += 1
+                    i += 1
 
             if r.json()['data']['after'] is not None:
                 count_words(subreddit, word_list,
@@ -43,23 +43,23 @@ def count_words(subreddit, word_list, word_count=[], page_after=None):
 
         if r.status_code == 200:
             for child in r.json()['data']['children']:
-                j = 0
-                for j in range(len(word_list)):
+                i = 0
+                for i in range(len(word_list)):
                     for word in [w for w in child['data']['title'].split()]:
                         word = word.lower()
-                        if word_list[j] == word:
-                            word_count[j] += 1
-                    j += 1
+                        if word_list[i] == word:
+                            word_count[i] += 1
+                    i += 1
             if r.json()['data']['after'] is not None:
                 count_words(subreddit, word_list,
                             word_count, r.json()['data']['after'])
             else:
                 dicto = {}
                 for key_word in list(set(word_list)):
-                    j = word_list.index(key_word)
-                    if word_count[j] != 0:
-                        dicto[word_list[j]] = (word_count[j] *
-                                               word_list.count(word_list[j]))
+                    i = word_list.index(key_word)
+                    if word_count[i] != 0:
+                        dicto[word_list[i]] = (word_count[i] *
+                                               word_list.count(word_list[i]))
 
                 for key, value in sorted(dicto.items(),
                                          key=lambda x: (-x[1], x[0])):
